@@ -2,26 +2,35 @@ package com.epam.mentoring.cache.lfu;
 
 import java.time.Instant;
 
+import com.epam.mentoring.model.Entry;
+
 public class CacheItem {
 
-    private String key;
+    private Entry entry;
 
     private Instant expirationTime;
 
     private int numberOfUsage;
 
-    public CacheItem(String key, Instant expirationTime, int numberOfUsage) {
-        this.key = key;
+    private CacheItem prev;
+
+    private CacheItem next;
+
+    public CacheItem(Entry entry, Instant expirationTime, int numberOfUsage) {
+        this.entry = entry;
         this.expirationTime = expirationTime;
         this.numberOfUsage = numberOfUsage;
     }
 
-    public String getKey() {
-        return key;
+    public CacheItem() {
     }
 
-    public void setKey(String key) {
-        this.key = key;
+    public Entry getEntry() {
+        return entry;
+    }
+
+    public void setEntry(Entry entry) {
+        this.entry = entry;
     }
 
     public Instant getExpirationTime() {
@@ -36,37 +45,28 @@ public class CacheItem {
         return numberOfUsage;
     }
 
+    public void setNumberOfUsage(int numberOfUsage) {
+        this.numberOfUsage = numberOfUsage;
+    }
+
     public void incrementNumberOfUsage() {
         this.numberOfUsage++;
     }
 
-    @Override public boolean equals(Object o) {
-        if (this == o)
-            return true;
-        if (o == null || getClass() != o.getClass())
-            return false;
-
-        CacheItem cacheItem = (CacheItem) o;
-
-        if (numberOfUsage != cacheItem.numberOfUsage)
-            return false;
-        if (!key.equals(cacheItem.key))
-            return false;
-        return expirationTime.equals(cacheItem.expirationTime);
+    public CacheItem getPrev() {
+        return prev;
     }
 
-    @Override public int hashCode() {
-        int result = key.hashCode();
-        result = 31 * result + expirationTime.hashCode();
-        result = 31 * result + numberOfUsage;
-        return result;
+    public void setPrev(CacheItem prev) {
+        this.prev = prev;
     }
 
-    @Override public String toString() {
-        return "CacheItem{" +
-                "key='" + key + '\'' +
-                ", expirationTime=" + expirationTime +
-                ", numberOfUsage=" + numberOfUsage +
-                '}';
+    public CacheItem getNext() {
+        return next;
     }
+
+    public void setNext(CacheItem next) {
+        this.next = next;
+    }
+
 }

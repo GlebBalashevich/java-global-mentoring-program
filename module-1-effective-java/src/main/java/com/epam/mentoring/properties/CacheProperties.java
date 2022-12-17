@@ -6,18 +6,19 @@ public class CacheProperties {
 
     private int expirationTime = 5;
 
-    public CacheProperties(){}
+    public CacheProperties() {
+    }
 
-    public CacheProperties(int maxSize, int expirationTime){
+    public CacheProperties(int maxSize, int expirationTime) {
         this.maxSize = maxSize;
         this.expirationTime = expirationTime;
     }
 
-    public int getMaxSize(){
+    public int getMaxSize() {
         return maxSize;
     }
 
-    public int getExpirationTime(){
+    public int getExpirationTime() {
         return expirationTime;
     }
 
