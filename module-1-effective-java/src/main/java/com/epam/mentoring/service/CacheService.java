@@ -5,7 +5,7 @@ import com.epam.mentoring.model.Entry;
 
 public class CacheService {
 
-    private MangoCache mangoCache;
+    private final MangoCache mangoCache;
 
     public CacheService(MangoCache mangoCache) {
         this.mangoCache = mangoCache;

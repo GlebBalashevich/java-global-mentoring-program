@@ -29,9 +29,9 @@ public class LFUCache extends TimerTask implements MangoCache {
 
     private final LFURemovalListener lfuRemovalListener;
 
-    private CacheItem head;
+    private final CacheItem head;
 
-    private CacheItem tail;
+    private final CacheItem tail;
 
     public LFUCache(CacheProperties cacheProperties) {
         this.cacheProperties = cacheProperties;
