@@ -1,8 +1,10 @@
 package com.epam.mentoring.cache.lfu;
 
 import java.time.Instant;
+import java.util.Objects;
 
 import com.epam.mentoring.model.Entry;
+import com.epam.mentoring.util.Generated;
 
 public class CacheItem {
 
@@ -67,6 +69,38 @@ public class CacheItem {
 
     public void setNext(CacheItem next) {
         this.next = next;
+    }
+
+    @Override
+    @Generated
+    public boolean equals(Object o) {
+        if (this == o)
+            return true;
+        if (o == null || getClass() != o.getClass())
+            return false;
+
+        CacheItem cacheItem = (CacheItem) o;
+
+        if (numberOfUsage != cacheItem.numberOfUsage)
+            return false;
+        if (!entry.equals(cacheItem.entry))
+            return false;
+        if (!expirationTime.equals(cacheItem.expirationTime))
+            return false;
+        if (!Objects.equals(prev, cacheItem.prev))
+            return false;
+        return Objects.equals(next, cacheItem.next);
+    }
+
+    @Override
+    @Generated
+    public int hashCode() {
+        int result = entry.hashCode();
+        result = 31 * result + expirationTime.hashCode();
+        result = 31 * result + numberOfUsage;
+        result = 31 * result + (prev != null ? prev.hashCode() : 0);
+        result = 31 * result + (next != null ? next.hashCode() : 0);
+        return result;
     }
 
 }

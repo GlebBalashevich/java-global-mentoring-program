@@ -2,10 +2,11 @@ import com.diffplug.gradle.spotless.FormatExtension
 import com.diffplug.gradle.spotless.SpotlessExtension
 
 plugins {
-    id("java")
+    java
     checkstyle
     jacoco
     id("com.diffplug.spotless") version "6.7.2" apply false
+    id("me.champeau.jmh") version "0.6.8" apply false
 }
 
 group = "com.epam.mentoring"
@@ -22,14 +23,15 @@ subprojects {
     }
 
     val slf4jVersion = "2.0.6"
+    val junitVersion = "5.8.1"
 
     dependencies {
         implementation("org.slf4j:slf4j-api:$slf4jVersion")
         implementation("org.slf4j:slf4j-simple:$slf4jVersion")
 
         testImplementation("org.assertj:assertj-core:3.23.1")
-        testImplementation("org.junit.jupiter:junit-jupiter-api:5.8.1")
-        testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:5.8.1")
+        testImplementation("org.junit.jupiter:junit-jupiter-api:$junitVersion")
+        testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:$junitVersion")
     }
 
     configure<SpotlessExtension> {
@@ -52,6 +54,14 @@ subprojects {
         toolVersion = "10.3"
     }
 
+    jacoco {
+        toolVersion = "0.8.8"
+    }
+
+    tasks.build{
+        dependsOn("jacocoTestCoverageVerification")
+    }
+
     tasks.jacocoTestReport {
         reports {
             xml.required.set(false)
@@ -61,6 +71,7 @@ subprojects {
     }
 
     tasks.jacocoTestCoverageVerification {
+        dependsOn("test")
         violationRules {
             rule {
                 limit {
@@ -79,9 +90,7 @@ subprojects {
         finalizedBy(tasks.jacocoTestReport)
         useJUnitPlatform()
     }
-    tasks.jacocoTestReport {
-        dependsOn(tasks.jacocoTestCoverageVerification)
-    }
+
 }
 
 fun FormatExtension.commonFormat() {
