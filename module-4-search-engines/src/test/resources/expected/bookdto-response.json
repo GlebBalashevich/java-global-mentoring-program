@@ -1,0 +1,10 @@
+{
+    "id": "008e6bbc-7ad3-4a8c-a3c0-658aad072c67",
+    "title": "book title",
+    "authors": [
+        "author1",
+        "author2"
+    ],
+    "content": "book content",
+    "language": "en"
+}

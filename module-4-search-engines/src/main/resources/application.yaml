@@ -1,0 +1,8 @@
+spring:
+  data:
+    solr:
+      host: http://localhost:8983/solr
+
+books:
+  directory: module-4-search-engines/src/main/resources/books/
+

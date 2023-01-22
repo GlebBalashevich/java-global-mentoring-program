@@ -1,0 +1,10 @@
+{
+    "input": "auth",
+    "suggestions": {
+        "autocomplete": [
+            {
+                "term": "author1"
+            }
+        ]
+    }
+}
