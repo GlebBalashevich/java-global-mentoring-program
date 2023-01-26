@@ -1,0 +1,59 @@
+version: '3.7'
+
+services:
+  elasticsearch:
+    image: elastic/elasticsearch:${ELASTIC_VERSION}
+    ports:
+      - "9200:9200"
+      - "9300:9300"
+#    configs:
+#      - source: elastic_config
+#        target: /usr/share/elasticsearch/config/elasticsearch.yml
+    environment:
+      ELASTIC_PASSWORD: ${ELASTIC_PASSWORD}
+      discovery.type: single-node
+      xpack.security.enabled: false
+    networks:
+      - elastic
+    volumes:
+      - elasticsearch-data:/usr/share/elasticsearch/data
+  logstash:
+    image: elastic/logstash:${ELASTIC_VERSION}
+    ports:
+      - "5000:5000"
+#    configs:
+#      - source: logstash_config
+#        target: /usr/share/logstash/config/logstash.yml
+#      - source: logstash_pipeline
+#        target: /usr/share/logstash/pipeline/logstash.conf
+    environment:
+      LS_JAVA_OPTS: "-Xmx256m -Xms256m"
+    networks:
+      - elastic
+  kibana:
+    image: elastic/kibana:${ELASTIC_VERSION}
+    ports:
+      - "5601:5601"
+#    configs:
+#      - source: kibana_config
+#        target: /usr/share/kibana/config/kibana.yml
+    networks:
+      - elastic
+
+#configs:
+
+#  elastic_config:
+#    file: ./elasticsearch/config/elasticsearch.yml
+#  logstash_config:
+#    file: ./logstash/config/logstash.yml
+#  logstash_pipeline:
+#    file: ./logstash/pipeline/logstash.conf
+#  kibana_config:
+#    file: ./kibana/config/kibana.yml
+
+networks:
+  elastic:
+
+volumes:
+  elasticsearch-data:
+    driver: local

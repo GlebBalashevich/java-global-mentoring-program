@@ -1,0 +1,6 @@
+spring:
+  elasticsearch:
+    uris:
+      - localhost:9200
+indexMappings:
+  directory: classpath:mappings/*.json
