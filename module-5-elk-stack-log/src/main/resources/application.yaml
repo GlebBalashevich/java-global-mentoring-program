@@ -2,5 +2,7 @@ spring:
   elasticsearch:
     uris:
       - localhost:9200
+  application:
+    name: event-service
 indexMappings:
   directory: classpath:mappings/*.json

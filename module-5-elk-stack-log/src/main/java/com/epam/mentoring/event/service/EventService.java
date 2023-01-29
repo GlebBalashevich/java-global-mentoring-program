@@ -65,7 +65,7 @@ public class EventService {
         return eventMapper.toEventDto(updatingEvent);
     }
 
-    public void deleteEvent(String id) {
+    public void deleteEventById(String id) {
         if (elasticClient.findEventById(id) == null) {
             throw notFoundException(id);
         }

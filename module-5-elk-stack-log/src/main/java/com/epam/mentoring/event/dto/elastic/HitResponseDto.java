@@ -12,6 +12,7 @@ import com.epam.mentoring.event.model.Event;
 @AllArgsConstructor
 public class HitResponseDto {
 
+    @JsonProperty("_id")
     private String id;
 
     @JsonProperty("_source")

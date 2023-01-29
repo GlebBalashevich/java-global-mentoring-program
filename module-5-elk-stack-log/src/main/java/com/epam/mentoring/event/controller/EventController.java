@@ -60,7 +60,7 @@ public class EventController {
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void deleteEvent(@PathVariable String id) {
         log.debug("Requested delete event with id: {}", id);
-        eventService.deleteEvent(id);
+        eventService.deleteEventById(id);
     }
 
     @DeleteMapping("/title/{title}")
