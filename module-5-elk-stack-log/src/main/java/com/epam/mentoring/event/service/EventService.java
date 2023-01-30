@@ -108,7 +108,7 @@ public class EventService {
     }
 
     private EventException notFoundException(String id) {
-        final var message = String.format("Event with id %s not found", id);
+        final var message = String.format("Error Event with id %s not found", id);
         log.error(message);
         return new EventException(message, HttpStatus.NOT_FOUND, ErrorCode.EVENT_NOT_FOUND);
     }

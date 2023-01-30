@@ -1,0 +1,19 @@
+00-00-00001 [] 3540 o.h.v.i.u.Version: HV000001: Hibernate Validator 6.2.4.Final
+00-00-00002 [] 3540 o.s.b.StartupInfoLogger: Starting EventApplication using Java 17.0.3 on EPBYMINW11FA with PID 3540 (C:\Users\Gleb_Balashevich\IdeaProjects\JavaMentoringProgram\module-5-elk-stack-log\build\classes\java\main started by Gleb_Balashevich in C:\Users\Gleb_Balashevich\IdeaProjects\JavaMentoringProgram\module-5-elk-stack-log)
+00-00-00003 [] 3540 o.s.b.SpringApplication: No active profile set, falling back to 1 default profile: "default"
+00-00-00004 [] 3540 o.s.b.w.e.t.TomcatWebServer: Tomcat initialized with port(s): 8080 (http)
+00-00-00005 [] 3540 o.s.b.w.s.c.ServletWebServerApplicationContext: Root WebApplicationContext: initialization completed in 2337 ms
+00-00-00006 [] 3540 o.s.b.w.e.t.TomcatWebServer: Tomcat started on port(s): 8080 (http) with context path ''
+00-00-00007 [] 3540 o.s.b.StartupInfoLogger: Started EventApplication in 4.882 seconds (JVM running for 8.451)
+00-00-00008 [app_name=event-service, app_version=1.0.0, host_name=EPBYMINW11FA] 3540 c.e.m.e.s.EventService: Initializing index for events...
+00-00-00009 [app_name=event-service, app_version=1.0.0, host_name=EPBYMINW11FA] 3540 c.e.m.e.s.EventService: Index was successfully initialized, updating index mappings...
+00-00-00010 [app_name=event-service, app_version=1.0.0, host_name=EPBYMINW11FA] 3540 c.e.m.e.s.EventService: Index mapping was successfully updated
+00-00-00011 [] 3540 o.s.w.s.FrameworkServlet: Initializing Servlet 'dispatcherServlet'
+00-00-00012 [] 3540 o.s.w.s.FrameworkServlet: Completed initialization in 1 ms
+00-00-00013 [d66f85ad-c33c-4d77-a972-96f48017a133, path=/api/v1/events/3dee82e5-bd84-45d2-9558-d6cd2d168706, method=GET] 3540 c.e.m.e.c.EventController: Requested search event by id: 3dee82e5-bd84-45d2-9558-d6cd2d168706
+00-00-00014 [d66f85ad-c33c-4d77-a972-96f48017a133, path=/api/v1/events/3dee82e5-bd84-45d2-9558-d6cd2d168706, method=GET] 3540 c.e.m.e.s.EventService: Error Event with id 3dee82e5-bd84-45d2-9558-d6cd2d168706 not found
+00-00-00015 [6cf41204-be24-433c-9864-931ce8a21d09, path=/api/v1/events/3dee82e5-bd84-45d2-9558-d6cd2d168706, method=GET] 3540 c.e.m.e.c.EventController: Requested search event by id: 3dee82e5-bd84-45d2-9558-d6cd2d168706
+00-00-00016 [6cf41204-be24-433c-9864-931ce8a21d09, path=/api/v1/events/3dee82e5-bd84-45d2-9558-d6cd2d168706, method=GET] 3540 c.e.m.e.s.EventService: Error Event with id 3dee82e5-bd84-45d2-9558-d6cd2d168706 not found
+00-00-00017 [8f951d97-56c7-496d-b95d-ab29432b5719, path=/api/v1/events/3dee82e5-bd84-45d2-9558-d6cd2d168706, method=GET] 3540 c.e.m.e.c.EventController: Requested search event by id: 3dee82e5-bd84-45d2-9558-d6cd2d168706
+00-00-00018 [8f951d97-56c7-496d-b95d-ab29432b5719, path=/api/v1/events/3dee82e5-bd84-45d2-9558-d6cd2d168706, method=GET] 3540 c.e.m.e.s.EventService: Error Event with id 3dee82e5-bd84-45d2-9558-d6cd2d168706 not found
+00-00-00019 [74933560-5223-4119-a07f-fee7422d6f2c, path=/api/v1/events, method=POST] 3540 c.e.m.e.c.EventController: Requested save new event: UpsertEventDto(title=Awesome Event, type=TECH_TALK, scheduledTime=2023-03-14T16:30:00Z, description=event description, subTopics=[topic1, topic2, topic3])

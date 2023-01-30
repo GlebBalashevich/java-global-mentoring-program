@@ -10,7 +10,7 @@
                      fileName="./logs/event-logs.log"
                      filePattern="./logs/$${date:yyyy-MM}/event-logs-%d{-dd-MMMM-yyyy}-%i.log.gz">
             <PatternLayout>
-                <pattern> %sn{2-2-5} [%uuid{RANDOM} app_name=$${spring:spring.application.name} app_version=$${spring:spring.application.version} host=${hostName}] %d{ISO8601} %pid %C{1.}:%m%n</pattern>
+                <pattern> %msgId %x %pid %C{1.}: %m%n</pattern>
             </PatternLayout>
             <Policies>
                 <!-- rollover on startup, daily and when the file reaches
