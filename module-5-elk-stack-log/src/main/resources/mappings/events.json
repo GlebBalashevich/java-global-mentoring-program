@@ -1,0 +1,22 @@
+{
+    "properties": {
+        "id": {
+            "type": "keyword"
+        },
+        "title": {
+            "type": "text"
+        },
+        "type": {
+            "type": "text"
+        },
+        "scheduledTime": {
+            "type": "date"
+        },
+        "description": {
+            "type": "text"
+        },
+        "subTopics": {
+            "type": "text"
+        }
+    }
+}

@@ -1,0 +1,9 @@
+spring:
+  elasticsearch:
+    uris:
+      - localhost:9200
+  application:
+    name: event-service
+    version: 1.0.0
+indexMappings:
+  directory: classpath:mappings/*.json

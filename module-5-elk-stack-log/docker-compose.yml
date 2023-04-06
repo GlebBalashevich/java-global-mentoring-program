@@ -1,0 +1,63 @@
+version: '3.7'
+
+services:
+  filebeat:
+    container_name: filebeat
+    image: elastic/filebeat:${ELASTIC_VERSION}
+    command: filebeat -e --strict.perms=false
+    environment:
+      - ELASTICSEARCH_PASSWORD=${ELASTIC_PASSWORD}
+    volumes:
+      - ./logs:/var/logs
+      - ./configs/filebeat.yml:/usr/share/filebeat/filebeat.yml:ro
+    networks:
+      - elastic
+  elasticsearch:
+    container_name: elasticsearch
+    image: elastic/elasticsearch:${ELASTIC_VERSION}
+    ports:
+      - "9200:9200"
+    environment:
+      ELASTIC_PASSWORD: ${ELASTIC_PASSWORD}
+      discovery.type: single-node
+      xpack.security.enabled: false
+    networks:
+      - elastic
+    volumes:
+      - elasticsearch-data:/usr/share/elasticsearch/data
+  logstash:
+    container_name: logstash
+    image: elastic/logstash:${ELASTIC_VERSION}
+    ports:
+      - "5044:5044"
+      - "5000:5000/tcp"
+    volumes:
+      - ./configs/logstash.yml:/usr/share/logstash/config/logstash.yml
+      - ./configs/logstash.conf:/usr/share/logstash/pipeline/logstash.conf
+    networks:
+      - elastic
+    environment:
+      LS_JAVA_OPTS: "-Xmx256m -Xms256m"
+    depends_on:
+      - elasticsearch
+  kibana:
+    container_name: kibana
+    image: elastic/kibana:${ELASTIC_VERSION}
+    ports:
+      - "5601:5601"
+    environment:
+      ELASTICSEARCH_URL: "http://elasticsearch:9200"
+      ELASTICSEARCH_HOSTS: '["http://elasticsearch:9200"]'
+    depends_on:
+      - elasticsearch
+    networks:
+      - elastic
+
+networks:
+  elastic:
+    driver: bridge
+
+volumes:
+  elasticsearch-data:
+    driver: local
+

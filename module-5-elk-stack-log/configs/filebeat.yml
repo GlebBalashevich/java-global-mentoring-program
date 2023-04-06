@@ -1,0 +1,13 @@
+filebeat.inputs:
+  - enabled: true
+    encoding: UTF-8
+    id: event-log
+    type: log
+    paths:
+      - /var/logs/*.log
+    scan_frequency: 5s
+
+output.logstash:
+  hosts: [ "logstash:5000" ]
+  protocol: "http"
+  encoding: UTF-8
